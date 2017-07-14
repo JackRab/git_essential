@@ -23,8 +23,25 @@ groups<- read.csv("../../build/output/11_groups_dummy.csv", header=TRUE)
 attach(groups)
 
 # create a list of data to fit the model
-votes_dat<-list(N=66281, J=445, K=159, G=11, jj=politician_id_numeric, kk=action_id_numeric, y=vote_1, x=matrix(group, nrow=66281))
-fit6<-stan(model_code=votes_code, data=votes_dat, iter=5000, warmup=1000, chains=1, verbose=TRUE)
+votes_dat<-list(
+ N=66281, 
+ J=445, 
+ K=159, 
+ G=11, 
+ jj=politician_id_numeric, 
+ kk=action_id_numeric, 
+ y=vote_1, 
+ x=matrix(group, nrow=66281)
+)
+
+fit6<-stan(
+ model_code=votes_code, 
+ data=votes_dat, 
+ iter=5000, 
+ warmup=1000, 
+ chains=1, 
+ verbose=TRUE
+)
 
 # GRAPHING & EXPORTING
 # ggmcmc requires Tidyr, which has a naming overlap with extract, so call rstan::extract explicitly
