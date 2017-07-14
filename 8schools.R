@@ -15,7 +15,7 @@ fit1 <- stan(
   refresh = 1000          # show progress every 'refresh' iterations
   )
   
- print(fit1, pars=c("theta", "mu", "tau", "lp__"), probs=c(.1,.5,.9))
+print(fit1, pars=c("theta", "mu", "tau", "lp__"), probs=c(.1,.5,.9))
  
  # all chains combined
 sampler_params <- get_sampler_params(fit1, inc_warmup = TRUE)
